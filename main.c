@@ -64,7 +64,7 @@ tabuada() // Método Tabuada.
 {
     // Declarando variáveis globais.
 	int valor, contador, resultado;
-	char verifica[3];
+	char verifica[4];
 	
 	printf("Digite um número: ");
     scanf("%i",&valor);
@@ -76,7 +76,7 @@ tabuada() // Método Tabuada.
     }
 	
     printf("\nDeseja ver a tabuada com outro número? (sim / nao): ");
-    scanf("%s",&verifica);
+    scanf(" %s",verifica);
     fflush(stdin);
     
 	strupr(verifica);
@@ -97,7 +97,7 @@ tabuada() // Método Tabuada.
 raiz(){ // Método Raíz
 	// Declarando variáveis globais.
 	float valor;
-	char verifica[3];
+	char verifica[4];
 	
 	printf("Digite um número: ");
     scanf("%f",&valor);
@@ -114,7 +114,7 @@ raiz(){ // Método Raíz
 	}
 	
     printf("Deseja ver a raíz quadrada de outro número? (sim / nao): ");
-    scanf("%s",&verifica);
+    scanf(" %s",verifica);
     fflush(stdin);
 	
 	strupr(verifica);
@@ -138,7 +138,7 @@ calculo() // Método Cálculo
     int operador;
 	float valor1, valor2;
 	double resultado;
-    char verifica[3];
+    char verifica[4];
 	
 	printf("Para efetuarmos um cálculo, será solicitado para digitar dois números em sequência e, por último, um número referente ao tipo de cálculo que deseja fazer.\n");
 	printf("Digite um número: ");
@@ -248,7 +248,7 @@ calculo() // Método Cálculo
     }
 
     printf("Deseja fazer um novo cálculo? (sim / nao): ");
-    scanf("%s",&verifica);
+    scanf(" %s",verifica);
     fflush(stdin);
 	
 	strupr(verifica);
@@ -270,7 +270,7 @@ bhaskara() // Método Bhaskara
 {
 	// Declarando variáveis globais.
 	float valor1, valor2, valor3, delta, x1, x2;
-	char verifica[3];
+	char verifica[4];
 	
 	printf("Digite um número para A: ");
 	scanf("%f",&valor1);
@@ -440,7 +440,7 @@ bhaskara() // Método Bhaskara
 	}
 	
 	printf("Deseja realizar uma nova fórmula de Bhaskara? (sim / nao): ");
-	scanf("%s",&verifica);
+	scanf(" %s",verifica);
 	fflush(stdin);
 	
 	strupr(verifica);
@@ -463,7 +463,7 @@ trigonometria() // Método Trigonometria
 	// Declarando variáveis globais.
 	int tipo;
 	float valor1, valor2;
-	char verifica[3];
+	char verifica[4];
 	
 	printf("Qual função de trigonometria deseja realizar?\n");
 	printf("(1 - Seno / 2 - Cosseno / 3 - Tangente / 4 - Voltar ao menu): ");
@@ -490,7 +490,7 @@ trigonometria() // Método Trigonometria
 			}
 			
 			printf("Deseja realizar uma outra função de trigonometria? (sim / nao): ");
-			scanf("%s",&verifica);
+			scanf(" %s",verifica);
 			fflush(stdin);
 			
 			strupr(verifica);
@@ -526,7 +526,7 @@ trigonometria() // Método Trigonometria
 			}
 			
 			printf("Deseja realizar uma outra função de trigonometria? (sim / nao): ");
-			scanf("%s",&verifica);
+			scanf(" %s",verifica);
 			fflush(stdin);
 			
 			strupr(verifica);
@@ -562,7 +562,7 @@ trigonometria() // Método Trigonometria
 			}
 			
 			printf("Deseja realizar uma outra função de trigonometria? (sim / nao): ");
-			scanf("%s",&verifica);
+			scanf(" %s",verifica);
 			fflush(stdin);
 			
 			strupr(verifica);
