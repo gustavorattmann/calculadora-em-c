@@ -4,67 +4,16 @@
 #include <math.h> // Biblioteca para operações matemáticas como raíz quadrada ou elevação.
 #include <locale.h> // Biblioteca de idioma.
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
-
-int main(int argc, char *argv[]) {
-	setlocale(LC_ALL,"portuguese"); // Define o idioma de qualquer texto que será apresentado no console como Português, ou seja, apresentará caracteres com assento.
-	
-	menu();	// Realiza invocação do método menu.
-	
-	return 0; // Retorno 0 (falso) indica que não houve nenhum erro.
-}
-
-menu() // Método Menu.
-{
-	// Declarando variáveis globais.
-	int tipo;
-	
-	printf("Dica: para que se ter uma melhor experiência visualmente com a janela de prompt de comando, maximize a tela.\n\n");
-	printf("Observações: Se quiser usar números reais, utilize vírgula, pois se usar ponto, será considerado como inteiro.\n\n");
-	printf("Escolha uma das opções abaixo:");
-	printf("\n(1 - Tabuada / 2 - Raíz Quadrada / 3 - Cálculo / 4 - Fórmula de Bhaskara / 5 - Funções Trigonométricas / 6 - Sair): ");
-	scanf("%i",&tipo); // %i, aloca e exibe apenas números antes da vírgula.
-	fflush(stdin); // Limpa o buffer do teclado, para que não seja alocado a tecla enter em uma memória temporária,
-				   // pois assim que ele for alocar a próxima variável, ele checará antes nessa memória.
-	
-	switch(tipo){ // Verifica a variável tipo.
-		case 1: // Se for digitado o número 1, faz o seguinte procedimento.
-			printf("\n"); // Serve para pular para a próxima linha, se for \n\n, pula duas linhas.
-			tabuada(); // Realiza invocação do método tabuada.
-		break; // Após executar os procedimentos acima, finaliza a escolha de caso.
-		case 2:
-			printf("\n");
-			raiz(); // Realiza invocação do método raiz.
-		break;
-		case 3:
-			printf("\n");
-			calculo(); // Realiza invocação do método calculo.
-		break;
-		case 4:
-			printf("\n");
-			bhaskara(); // Realiza invocação do método bhaskara.
-		break;
-		case 5:
-			printf("\n");
-			trigonometria(); // Realiza invocação do método trigonometria.
-		break;
-		case 6:
-			printf("\n");
-			sair(); // Realiza invocação do método sair.
-		break;
-		default: // Se nenhum dos números solicitado for digitado, executará os procedimentos desse escolha de caso padrão.
-			system("cls"); // Limpa a tela, apaga tudo que foi digitado anteriormente.
-			printf("Por favor, preencha como solicitado!\n\n");
-			menu(); // Realiza invocação do próprio método, para que ele seja repetido
-		break;
-	}
-}
+// Declarando variáveis globais.
+int tipo;
+float valor1, valor2, valor3;
+double resultado;
+char verifica[4];
 
 tabuada() // Método Tabuada.
 {
-    // Declarando variáveis globais.
+    // Declarando variáveis locais.
 	int valor, contador, resultado;
-	char verifica[4];
 	
 	printf("Digite um número: ");
     scanf("%i",&valor);
@@ -95,22 +44,16 @@ tabuada() // Método Tabuada.
 }
 
 raiz(){ // Método Raíz
-	// Declarando variáveis globais.
-	float valor;
-	char verifica[4];
-	
 	printf("Digite um número: ");
-    scanf("%f",&valor);
+    scanf("%f",&valor1);
     fflush(stdin);
     
-    if(valor == (int)valor){ //Realizado comparação verificando se o valor digitado é decimal ou se é inteiro. Após a comparação de igual, é realizado um Cast (Conversão) do valor decimal para inteiro.
-    	int resultado; // Se for decimal, será criado a variável resultado como inteiro.
-		resultado = sqrt((int)valor); // A variável resultado recebe resultado da raíz como inteiro.
-		printf("A raíz quadrada de %i é %i\n\n",(int)valor,resultado); // É exibido o resultado, convertendo o valor que é decimal para inteiro, para não exibir nenhum número depois da vírgula.
+    if(valor1 == (int)valor1){ //Realizado comparação verificando se o valor digitado é decimal ou se é inteiro. Após a comparação de igual, é realizado um Cast (Conversão) do valor decimal para inteiro.
+		resultado = sqrt((int)valor1); // Se não for decimal, a variável resultado recebe resultado da raíz como inteiro.
+		printf("A raíz quadrada de %i é %i\n\n",(int)valor1,(int)resultado); // É exibido o resultado, convertendo o valor que é decimal para inteiro, para não exibir nenhum número depois da vírgula.
 	}else{ // Se o valor for decimal, fará os procedimentos abaixo
-		double resultado;
-    	resultado = sqrt(valor);
-    	printf("A raíz quadrada de %f é %f\n\n",valor,resultado);
+    	resultado = sqrt(valor1);
+    	printf("A raíz quadrada de %g é %lg\n\n",valor1,resultado);
 	}
 	
     printf("Deseja ver a raíz quadrada de outro número? (sim / nao): ");
@@ -134,11 +77,8 @@ raiz(){ // Método Raíz
 
 calculo() // Método Cálculo
 {
-    // Declarando variáveis globais.
+    // Declarando variável local.
     int operador;
-	float valor1, valor2;
-	double resultado;
-    char verifica[4];
 	
 	printf("Para efetuarmos um cálculo, será solicitado para digitar dois números em sequência e, por último, um número referente ao tipo de cálculo que deseja fazer.\n");
 	printf("Digite um número: ");
@@ -222,7 +162,7 @@ calculo() // Método Cálculo
 			resultado = (int)valor1 % (int)valor2;
 			
 			if(valor1 == (int)valor1 && valor2 == (int)valor2){
-				printf("O resto de %i divido por %i é %i\n\n",(int)valor1,(int)valor2,(int)resultado);
+				printf("O resto de %i divido por %i é %lg\n\n",(int)valor1,(int)valor2,resultado);
 			}else{
 				system("cls");
             	printf("Por favor, digite números sem vírgula para realizar este cálculo!\n\n");
@@ -268,9 +208,8 @@ calculo() // Método Cálculo
 
 bhaskara() // Método Bhaskara
 {
-	// Declarando variáveis globais.
-	float valor1, valor2, valor3, delta, x1, x2;
-	char verifica[4];
+	// Declarando variáveis locais.
+	float delta, x1, x2;
 	
 	printf("Digite um número para A: ");
 	scanf("%f",&valor1);
@@ -460,11 +399,6 @@ bhaskara() // Método Bhaskara
 
 trigonometria() // Método Trigonometria
 {
-	// Declarando variáveis globais.
-	int tipo;
-	float valor1, valor2;
-	char verifica[4];
-	
 	printf("Qual função de trigonometria deseja realizar?\n");
 	printf("(1 - Seno / 2 - Cosseno / 3 - Tangente / 4 - Voltar ao menu): ");
 	scanf("%i",&tipo);
@@ -473,10 +407,10 @@ trigonometria() // Método Trigonometria
 	switch(tipo){
 		case 1:
 			printf("\nDigite um número para o cateto oposto: ");
-			scanf("%d",&valor1);
+			scanf("%f",&valor1);
 			fflush(stdin);
 			printf("Digite um número para a hipotenusa: ");
-			scanf("%d",&valor2);
+			scanf("%f",&valor2);
 			fflush(stdin);
 			
 			if(valor1 == (int)valor1 && valor2 == (int)valor2){
@@ -509,10 +443,10 @@ trigonometria() // Método Trigonometria
 		break;
 		case 2:
 			printf("\nDigite um número para o cateto adjacente: ");
-			scanf("%d",&valor1);
+			scanf("%f",&valor1);
 			fflush(stdin);
 			printf("Digite um número para a hipotenusa: ");
-			scanf("%d",&valor2);
+			scanf("%f",&valor2);
 			fflush(stdin);
 			
 			if(valor1 == (int)valor1 && valor2 == (int)valor2){
@@ -545,10 +479,10 @@ trigonometria() // Método Trigonometria
 		break;
 		case 3:
 			printf("\nDigite um número para o cateto oposto: ");
-			scanf("%d",&valor1);
+			scanf("%f",&valor1);
 			fflush(stdin);
 			printf("Digite um número para o cateto adjacente: ");
-			scanf("%d",&valor2);
+			scanf("%f",&valor2);
 			fflush(stdin);
 			
 			if(valor1 == (int)valor1 && valor2 == (int)valor2){
@@ -596,4 +530,55 @@ sair()
 	system("cls");
 	printf("Obrigado por utilizar nosso programa. Ele será encerrado agora!");
 	exit(0);
+}
+
+menu() // Método Menu.
+{
+	printf("Dica: para que se ter uma melhor experiência visualmente com a janela de prompt de comando, maximize a tela.\n\n");
+	printf("Observações: Se quiser usar números reais, utilize vírgula, pois se usar ponto, será considerado como inteiro.\n\n");
+	printf("Escolha uma das opções abaixo:");
+	printf("\n(1 - Tabuada / 2 - Raíz Quadrada / 3 - Cálculo / 4 - Fórmula de Bhaskara / 5 - Funções Trigonométricas / 6 - Sair): ");
+	scanf("%i",&tipo); // %i, aloca e exibe apenas números antes da vírgula.
+	fflush(stdin); // Limpa o buffer do teclado, para que não seja alocado a tecla enter em uma memória temporária,
+				   // pois assim que ele for alocar a próxima variável, ele checará antes nessa memória.
+	
+	switch(tipo){ // Verifica a variável tipo.
+		case 1: // Se for digitado o número 1, faz o seguinte procedimento.
+			printf("\n"); // Serve para pular para a próxima linha, se for \n\n, pula duas linhas.
+			tabuada(); // Realiza invocação do método tabuada.
+		break; // Após executar os procedimentos acima, finaliza a escolha de caso.
+		case 2:
+			printf("\n");
+			raiz(); // Realiza invocação do método raiz.
+		break;
+		case 3:
+			printf("\n");
+			calculo(); // Realiza invocação do método calculo.
+		break;
+		case 4:
+			printf("\n");
+			bhaskara(); // Realiza invocação do método bhaskara.
+		break;
+		case 5:
+			printf("\n");
+			trigonometria(); // Realiza invocação do método trigonometria.
+		break;
+		case 6:
+			printf("\n");
+			sair(); // Realiza invocação do método sair.
+		break;
+		default: // Se nenhum dos números solicitado for digitado, executará os procedimentos desse escolha de caso padrão.
+			system("cls"); // Limpa a tela, apaga tudo que foi digitado anteriormente.
+			printf("Por favor, preencha como solicitado!\n\n");
+			menu(); // Realiza invocação do próprio método, para que ele seja repetido
+		break;
+	}
+}
+
+int main(int argc, char *argv[]) {
+	setlocale(LC_ALL,"portuguese"); // Define o idioma de qualquer texto que será apresentado no console como Português, ou seja, apresentará caracteres com assento.
+	
+	menu();	// Realiza invocação do método menu.
+	
+	return 0; // Retorno 0 (falso) indica que não houve nenhum erro.
 }
