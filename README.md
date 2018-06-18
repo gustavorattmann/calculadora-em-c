@@ -1,0 +1,2 @@
+# Calculadora em C
+Este projeto é uma calculadora básica feita em C, apenas para aprendizagem, caso queiram incrementar mais funcionalidades ou aperfeiçoar, fiquem à vontade. Esta calculadora exibe tabuada e resultados de raíz quadrada, fórmula de Bhaskara, funções trigonométricas e cálculos simples, como soma, subtração, multiplicação, divisão, resto de divisão e elevação. Próximo passo será criar uma calculadora que armazene todos os valores digitados e resultados em um banco de dados, e adicionar a data e hora, para criar um histórico.
